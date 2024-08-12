@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Fornecedor e Produto</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
+    <style>
+        .custom-bg-blue {
+            background-color: #0085B2;
+        }
+
+        .input-borda-preta {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid mt-4 mb-5">
+        <h3 class="text-center mb-4">CADASTRO FORNECEDOR/PRODUTO</h3>
+        <div class="rounded-top custom-bg-blue text-white p-1">
+            <h5 class="mt-2 ml-2">Dados do Fornecedor</h5>
+        </div>
+        <div class="border rounded-bottom border-dark p-4 mt-0">
+            <form id="empresa-form">
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="razaoSocial" class="font-weight-bold">Razão Social</label>
+                        <input type="text" class="form-control input-borda-preta" id="razaoSocial" name="razaoSocial" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="cnpj" class="font-weight-bold">CNPJ</label>
+                        <input type="text" class="form-control input-borda-preta" id="cnpj" name="cnpj" maxlength="14" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="nome-ficticio" class="font-weight-bold">Nome Fantasia</label>
+                        <input type="text" class="form-control input-borda-preta" id="nome-ficticio" name="nome-ficticio" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="insEstadual" class="font-weight-bold">Inscrição Estadual</label>
+                        <input type="text" class="form-control input-borda-preta" id="insEstadual" name="insEstadual">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="codigo-postal" class="font-weight-bold">CEP</label>
+                        <input type="text" class="form-control input-borda-preta" id="codigo-postal" name="codigo-postal" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="insMunicipal" class="font-weight-bold">Inscrição Municipal</label>
+                        <input type="text" class="form-control input-borda-preta" id="insMunicipal" name="insMunicipal">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label for="rua" class="font-weight-bold">Endereço</label>
+                        <input type="text" class="form-control input-borda-preta" id="rua" name="rua" required readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="num" class="font-weight-bold">Número</label>
+                        <input type="text" class="form-control input-borda-preta" id="num" name="num" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="infoAdicional" class="font-weight-bold">Complemento</label>
+                    <input type="text" class="form-control input-borda-preta" id="infoAdicional" name="infoAdicional">
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-5">
+                        <label for="bairro" class="font-weight-bold">Bairro</label>
+                        <input type="text" class="form-control input-borda-preta" id="bairro" name="bairro" required readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="municipio" class="font-weight-bold">Municipio</label>
+                        <input type="text" class="form-control input-borda-preta" id="municipio" name="municipio" required readonly>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="estado" class="font-weight-bold">Estado</label>
+                        <input type="text" class="form-control input-borda-preta" id="estado" name="estado" required readonly>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="responsavel" class="font-weight-bold">Nome da pessoa de contato</label>
+                        <input type="text" class="form-control input-borda-preta" id="responsavel" name="responsavel" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="num-telefone" class="font-weight-bold">Telefone</label>
+                        <input type="tel" class="form-control input-borda-preta" id="num-telefone" name="num-telefone" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="email-contato" class="font-weight-bold">E-mail</label>
+                        <input type="email" class="form-control input-borda-preta" id="email-contato" name="email-contato" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="rounded-top custom-bg-blue text-white p-1 mt-4">
+            <h5 class="mt-2 ml-2">Produtos</h5>
+        </div>
+        <div class="border rounded-bottom border-dark p-2">
+            <table id="lista-itens" class="table table-borderless">
+                <tbody>
+                </tbody>
+            </table>
+            <button onclick="produto()" id="addItem" class="btn btn-success w-100">Adicionar Produto</button>
+        </div>
+        <div class="rounded-top custom-bg-blue text-white p-1 mt-4">
+            <h5 class="mt-2 ml-2">Anexos</h5>
+        </div>
+        <div class="border rounded-bottom border-dark p-2">
+            <table id="lista-documentos" class="table table-borderless">
+                <h5 class="font-weight-bold">&ensp;Itens</h5>
+                <tbody>
+                </tbody>
+            </table>
+            <input type="file" id="inputDocumento" accept=".pdf, .doc, .docx" class="mb-3">
+            <button onclick="anexo()" id="addDocumento" class="btn btn-success w-100">Incluir Anexo</button>
+        </div>
+        <button onclick="salvar()" class="btn btn-success w-100 mt-4">Salvar Fornecedor</button>
+    </div>
+    <div class="modal" id="loadingModal" tabindex="-1" role="dialog" aria-labelledby="loadingModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Formulário salvo com Sucesso!!!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
