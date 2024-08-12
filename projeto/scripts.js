@@ -265,6 +265,7 @@ $(document).ready(() => {
         const razaoSocial = $('#razaoSocial').val();
         const nomeFantasia = $('#nome-ficticio').val();
         const cnpj = $('#cnpj').val().replace(/\D/g, '');
+        const cep = $('#codigo-postal').val().replace(/\D/g, '');
         const nomeContato = $('#responsavel').val();
         const telefoneContato = $('#num-telefone').val().replace(/\D/g, '');
         const emailContato = $('#email-contato').val();
@@ -282,6 +283,10 @@ $(document).ready(() => {
         if (!cnpj) {
             isValid = false;
             mensagens.push("CNPJ é obrigatório.");
+        }
+        if (!cep || cep.length !== 8) {
+            isValid = false;
+            mensagens.push("CEP é obrigatório.");
         }
         if (!nomeContato) {
             isValid = false;
@@ -357,6 +362,12 @@ $(document).ready(() => {
         const razaoSocial = $('#razaoSocial').val();
         const nomeFantasia = $('#nome-ficticio').val();
         const cnpj = $('#cnpj').val().replace(/\D/g, '');
+        const inscricaoMunicipal = $('#insMunicipal').val() || null;
+        const inscricaoEstadual = $('#insEstadual').val() || null;
+        const cep = $('#codigo-postal').val().replace(/\D/g, '');
+        const endereco = $('#rua').val();
+        const municipio = $('#municipio').val();
+        const estado = $('#estado').val();
         const nomeContato = $('#responsavel').val();
         const telefoneContato = $('#num-telefone').val().replace(/\D/g, '');
         const emailContato = $('#email-contato').val();
@@ -389,12 +400,23 @@ $(document).ready(() => {
             razaoSocial,
             nomeFantasia,
             cnpj,
+            cep, 
+            endereco,
+            municipio,
+            estado, 
             nomeContato,
             telefoneContato,
             emailContato,
             produtos: produtos.length ? produtos : [], 
             anexos: anexos.length ? anexos : [] 
         };
+
+        if (inscricaoMunicipal) {
+            jsonData.inscricaoMunicipal = inscricaoMunicipal;
+        }
+        if (inscricaoEstadual) {
+            jsonData.inscricaoEstadual = inscricaoEstadual;
+        }
 
         const jsonString = JSON.stringify(jsonData, null, 4); 
 
@@ -414,6 +436,24 @@ $(document).ready(() => {
         setTimeout(() => {
             $('#loadingModal').modal('hide');
             alert('Fornecedor salvo com sucesso e arquivo JSON baixado!');
+    
+            $('#razaoSocial').val('');
+            $('#nome-ficticio').val('');
+            $('#cnpj').val('');
+            $('#responsavel').val('');
+            $('#num-telefone').val('');
+            $('#email-contato').val('');
+            $('#codigo-postal').val('');
+            $('#rua').val('');
+            $('#municipio').val('');
+            $('#estado').val('');
+            $('#inscricao_municipal').val('');
+            $('#inscricao_estadual').val('');
+    
+            $(".produto").remove();
+            sessionStorage.removeItem('documentos');
+
         }, 2000);
     }
+
 });
